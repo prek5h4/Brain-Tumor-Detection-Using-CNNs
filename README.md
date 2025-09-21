@@ -26,8 +26,7 @@ This project implements a CNN-based model to classify MRI brain scans as tumor o
 
 ## Dataset
 
-- **Source:** [Add dataset source link here]  
-- **Number of images:** [Add total images]  
+- **Source:** https://www.kaggle.com/code/sudipde25/mri-dataset  
 - **Classes:** Tumor, Non-Tumor (or specify tumor types if multiple)  
 - **Preprocessing:** Resizing, normalization, data augmentation (rotation, flip, etc.)
 
