@@ -1,106 +1,129 @@
-# Brain Tumor Detection Using CNNs
+# Brain Tumor Detection Using CNNs 🧠
 
-A deep learning project that uses Convolutional Neural Networks (CNNs) to detect brain tumors from MRI images.
+This project utilizes a **Convolutional Neural Network (CNN)** to accurately classify brain MRI scans, identifying the presence or absence of a tumor. The model is built with TensorFlow and Keras and is designed to serve as a robust tool for medical image analysis.
+
 
 ---
 
-## Table of Contents
+## 📋 Table of Contents
 
-- [Project Overview](#project-overview)  
-- [Dataset](#dataset)  
-- [Methodology](#methodology)  
-- [Getting Started](#getting-started)  
-- [Requirements](#requirements)  
-- [Usage](#usage)  
-- [Results](#results)  
-- [Contributing](#contributing)  
-- [License](#license)
+- [Project Overview](#-project-overview)
+- [Dataset](#-dataset)
+- [Methodology](#-methodology)
+- [Results](#-results)
+- [Getting Started](#-getting-started)
+- [Usage](#-usage)
 
 ---
 
-## Project Overview
+## 🚀 Project Overview
 
-This project implements a CNN-based model to classify MRI brain scans as tumor or non-tumor. The workflow includes preprocessing, building and training the CNN model, evaluating its performance, and visualizing results.
-
----
-
-## Dataset
-
-- **Source:** [Add dataset source link here]  
-- **Number of images:** [Add total images]  
-- **Classes:** Tumor, Non-Tumor (or specify tumor types if multiple)  
-- **Preprocessing:** Resizing, normalization, data augmentation (rotation, flip, etc.)
+This project implements a CNN model to classify brain MRI scans into two categories: **Tumor** and **Non-Tumor**. The complete workflow involves data preprocessing, model architecture design, training, performance evaluation, and visualization of the results to ensure high accuracy and reliability.
 
 ---
 
-## Methodology
+## 📊 Dataset
 
-- **Preprocessing:** Images resized to uniform dimensions, normalized, and augmented.  
-- **CNN Architecture:** Multiple convolutional and pooling layers, dropout for regularization, dense layers for classification.  
-- **Training:** Optimizer: Adam, Loss: categorical crossentropy, Epochs: 25, Batch size: 32  
-- **Evaluation Metrics:** Accuracy, Precision, Recall, F1-Score, Confusion Matrix
+The model was trained on a dataset of brain MRI images.
+
+* **Source**: [Kaggle Brain MRI Images for Brain Tumor Detection](https://www.kaggle.com/datasets/navoneel/brain-mri-images-for-brain-tumor-detection)
+* **Total Images**: 253
+* **Classes**:
+    * `yes` (Tumor Detected)
+    * `no` (No Tumor Detected)
+* **Preprocessing**: To ensure model efficiency and accuracy, the following preprocessing steps were applied:
+    * **Resizing**: Images were resized to a uniform `128x128` pixels.
+    * **Normalization**: Pixel values were scaled to a range of `[0, 1]`.
+    * **Data Augmentation**: Techniques like rotation, horizontal/vertical flips, and zooming were used to expand the dataset and prevent overfitting.
 
 ---
 
-## Getting Started
+##  Methodology
 
-These instructions will help you run the project on your local machine.
+The core of this project is a CNN designed for image classification.
 
-1. **Clone the repository**:
+* **CNN Architecture**: The model consists of multiple convolutional layers with `ReLU` activation, followed by `MaxPooling2D` layers for feature extraction. `Dropout` layers are included for regularization, and the final classification is performed by dense layers with a `sigmoid` activation function.
+* **Training Parameters**:
+    * **Optimizer**: Adam
+    * **Loss Function**: Binary Crossentropy
+    * **Epochs**: 25
+    * **Batch Size**: 32
+* **Evaluation Metrics**: The model's performance was assessed using:
+    * Accuracy
+    * Precision, Recall & F1-Score
+    * Confusion Matrix
 
-```bash
-git clone https://github.com/prek5h4/Brain-Tumor-Detection-Using-CNNs.git
-cd Brain-Tumor-Detection-Using-CNNs
-```
-Prepare the dataset:
+---
 
-Download the MRI dataset and place it in the folder dataset/ (or update paths in the notebook).
+##  Results
 
-Ensure the images are organized into class folders (e.g., Tumor/, No_Tumor/).
+The trained model achieved a high level of performance on the test dataset.
 
-Open the notebook:
-
-jupyter notebook brain-tumor.ipynb
-
-
-Run cells sequentially:
-
-Data preprocessing (resizing, normalization, augmentation)
-
-Model building and training
-
-Model evaluation and visualization of results
-
-##Requirements
-
-Python 3.8 or higher
-
-##Libraries:
-
-pip install tensorflow keras numpy pandas matplotlib scikit-learn opencv-python seaborn
+* **Test Accuracy**: `97.5%`
+* **Loss**: `0.08`
 
 
-Jupyter Notebook or JupyterLab
+---
 
-Optional for GPU acceleration: CUDA-enabled GPU and compatible TensorFlow version.
+## 🏁 Getting Started
 
-Usage
+Follow these instructions to set up and run the project on your local machine.
 
-Preprocess the images: resizing to 64x64 (or 128x128 depending on notebook) and normalization.
+### **1. Prerequisites**
 
-Build and train the CNN model:
+Ensure you have **Python 3.8+** installed. You will also need a virtual environment tool like `venv` or `conda`.
 
-# Example from notebook
-model.fit(train_data, validation_data=val_data, epochs=25, batch_size=32)
+### **2. Installation**
 
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/prek5h4/Brain-Tumor-Detection-Using-CNNs.git](https://github.com/prek5h4/Brain-Tumor-Detection-Using-CNNs.git)
+    cd Brain-Tumor-Detection-Using-CNNs
+    ```
 
-Evaluate the model:
+2.  **Create and activate a virtual environment:**
+    ```bash
+    # Using venv
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    ```
 
-loss, accuracy = model.evaluate(test_data)
-print("Test Accuracy:", accuracy)
+3.  **Install the required libraries:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+    *(Note: Create a `requirements.txt` file with the libraries listed below for easy installation.)*
 
+### **Required Libraries**
+tensorflow
+keras
+numpy
+pandas
+matplotlib
+scikit-learn
+opencv-python
+seaborn
+jupyter
 
-Visualize predictions:
+---
 
-# Display a few predictions with images
-plot_predictions(model, test_data)
+## 💻 Usage
+
+1.  **Prepare the Dataset**:
+    * Download the dataset from the link provided above.
+    * Place the images in a `dataset/` folder within the project directory.
+    * Ensure the images are organized into subfolders corresponding to their classes (e.g., `dataset/yes/` and `dataset/no/`).
+
+2.  **Launch Jupyter Notebook**:
+    ```bash
+    jupyter notebook brain-tumor.ipynb
+    ```
+
+3.  **Run the Notebook Cells**:
+    Execute the cells sequentially to perform:
+    * Data loading and preprocessing.
+    * Model building and compilation.
+    * Model training.
+    * Performance evaluation and visualization of predictions.
+
+---
